@@ -7,14 +7,13 @@ library(viridis)
 library(ggplot2)
 library(forcats)
 
-#Setting working directory for Masters Chapter folder
-setwd("F:/Documents/Masters/Chapters/Chapter 1/Tables")
 
-#Import the table with summary of taxa, year Manuscript etc.
+
+#Master metadata file.
 Master = read.csv("Dataframe_1.csv")
 
 
-#Change the name of disciplines
+#Change the name of ecological disciplines
 
 Master$Discipline = gsub("Other Drivers of Movement and Behavior", 
                          "Other Drivers",Master$Discipline)
@@ -27,7 +26,7 @@ Alluvial <- Master %>%
   dplyr::select(Discipline, Device_Pairing_Abbreviation, Manuscript) %>%
   distinct(Discipline, Device_Pairing_Abbreviation, Manuscript)
 
-#Aggregate the data to count how many manuscripts report each combination
+#Aggregate the data to count how many manuscripts report each combination of tools
 Alluvial_count <- Alluvial %>%
   count(Device_Pairing_Abbreviation, Discipline)
 
@@ -75,6 +74,8 @@ df$node <- factor(
 
 unique(sum)
 
+#Format the alluvial plot
+
 width <- .4
 
 p <- ggplot(df, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
@@ -107,16 +108,7 @@ p = p +
 
 p
 
-path_out = "E:/Documents/Masters/Chapters/Chapter 1/Images"
-ggsave("Fig2.jpeg",
-       plot = p, 
-       path = path_out,
-       device = "png",
-       dpi=300, 
-       width=400, 
-       height=300, 
-       units = "mm",
-       bg="white")
+
 
 
 
@@ -262,3 +254,4 @@ ggsave("Fig2Extra.jpeg",
        height=300, 
        units = "mm",
        bg="white")
+
