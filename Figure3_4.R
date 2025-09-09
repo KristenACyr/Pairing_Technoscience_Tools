@@ -11,8 +11,7 @@ library("egg")
 library(stringr)
 library(tidyverse)
 
-#Setting working directory for Masters Chapter folder
-setwd("F:/Documents/Masters/Chapters/Chapter 1/Tables")
+
 
 ###Import master dataframe 
 inter_perYear = read.csv("Dataframe_1.csv")
@@ -224,16 +223,6 @@ temporal_trends
 
 
 
-path_out = "E:/Documents/Masters/Chapters/Chapter 1/Images"
-ggsave("Fig4Combined.jpeg",
-       plot = temporal_trends , 
-       path = path_out,
-       device = "png", 
-       dpi=300, 
-       width=300, 
-       height=230, 
-       units = "mm")
-
 
 
 
@@ -346,15 +335,7 @@ TaxaCombo_Plot1 = TaxaCombo_Plot1 +
 
 
 
-path_out = "E:/Documents/Masters/Chapters/Chapter 1/Images"
-ggsave("Figure4ALT.jpeg",
-       plot = TaxaCombo_Plot1, 
-       path = path_out,
-       device = "png", 
-       dpi=300, 
-       width=600, 
-       height=300, 
-       units = "mm")
+
 
 
 p = ggarrange(temporal_trends, TaxaCombo_Plot1,
@@ -364,15 +345,7 @@ p = ggarrange(temporal_trends, TaxaCombo_Plot1,
 
 p
 
-path_out = "E:/Documents/Masters/Chapters/Chapter 1/Images"
-ggsave("Figure4.jpeg",
-       plot = p, 
-       path = path_out,
-       device = "png", 
-       dpi=300, 
-       width=600, 
-       height=300, 
-       units = "mm")
+
 
 
 
@@ -461,15 +434,7 @@ TaxaCombo_Plot1 = TaxaCombo_Plot1 +
 
 
 
-path_out = "E:/Documents/Masters/Chapters/Chapter 1/Images"
-ggsave("Figure4ALT.jpeg",
-       plot = TaxaCombo_Plot1, 
-       path = path_out,
-       device = "png", 
-       dpi=300, 
-       width=400, 
-       height=275, 
-       units = "mm")
+
 
 
 
@@ -508,4 +473,5 @@ Total_Devices = combo_trends_sum %>%
 
 #Get total number of species
 count(combo_diversity$Number.of.Unique.Species)
+
 
